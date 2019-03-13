@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Arrays.Tasks
 {
@@ -20,11 +16,12 @@ namespace Arrays.Tasks
 			double[,] array = new double[M, N];
 			Random random = new Random();
 
+			Console.WriteLine("---------------------------------------\nЗадание 1:\n");
 			Console.WriteLine("Исходный массив: ");
 			// Заполнение массива случайными значениями
 			for (int row = 0; row < M; row++)  // перебираем строки
 			{
-				for (int column = 0; column < M; column++) // перебираем столбцы в строке
+				for (int column = 0; column < N; column++) // перебираем столбцы в строке
 				{
 					array[row, column] = random.Next(100); // присваиваем очередному элементу массива случайное значение в интервале [0..100)
 					Console.Write(array[row, column] + "\t");
@@ -34,14 +31,14 @@ namespace Arrays.Tasks
 
 			// поиск минимального и максимального значения в массиве
 			double min, max = min = array[0, 0];// объявление и инициализация стартовых значений для минимума и максимума
-			for (int row = 0; row < M; row++)	// перебираем строки
+			for (int row = 0; row < M; row++)   // перебираем строки
 			{
-				for (int column = 0; column < M; column++) // перебираем столбцы в строке
+				for (int column = 0; column < N; column++) // перебираем столбцы в строке
 				{
 					if (array[row, column] < min) // если текущий элемент меньше, чем тот, который считали минимальным до этого,
-						min = array[row, column];	// то запоминаем новое значение минимума
+						min = array[row, column];  // то запоминаем новое значение минимума
 					if (array[row, column] > max) // если текущий элемент меньше, чем тот, который считали минимальным до этого,
-						max = array[row, column];	// то запоминаем новое значение минимума
+						max = array[row, column];  // то запоминаем новое значение минимума
 				}
 			}
 
@@ -55,32 +52,74 @@ namespace Arrays.Tasks
 		/// </summary>
 		public static void task2()
 		{
-			Console.WriteLine("Задание 2:\n"+);
 			const int N = 15;
 			double[,] С = new double[N, N];
+			double sumDiag = 0;
 			Random random = new Random();
 
+			Console.WriteLine("---------------------------------------\nЗадание 2:\n");
 			Console.WriteLine("Исходный массив: ");
 			// Заполнение массива случайными значениями
 			for (int row = 0; row < N; row++)  // перебираем строки
 			{
 				for (int column = 0; column < N; column++) // перебираем столбцы в строке
 				{
-					С[row, column] = random.Next(1000)/10.0;		// присваиваем очередному элементу массива случайное значение в интервале [0..100)
-					Console.Write("{0,5:f1} ", С[row, column]);	// форматированный вывод чисел по 5 символов на число с 1 цифрой после запятой
+					С[row, column] = random.Next(1000) / 10.0;      // присваиваем очередному элементу массива случайное значение в интервале [0..100)
+					Console.Write("{0,5:f1} ", С[row, column]);  // форматированный вывод чисел по 5 символов на число с 1 цифрой после запятой
+					if (row == column)
+						sumDiag += С[row, column];
 				}
 				Console.WriteLine();
 			}
 
+			Console.WriteLine($"\nСумма элементов, расположенных на главной диагонали: {sumDiag}\n");
 		}
 
 		/// <summary>
-		/// Найти номер строки и столбца Двумерного массива для максимального элемента этого массива.Аналогично для минимального.
+		/// Найти номер строки и столбца Двумерного массива для максимального элемента этого массива. Аналогично для минимального.
 		/// </summary>
 		public static void task3()
 		{
+			const int M = 5, N = 6;
+			double[,] array = new double[M, N];
+			Random random = new Random();
 
+			Console.WriteLine("---------------------------------------\nЗадание 3:\n");
+			Console.WriteLine("Исходный массив: ");
+			// Заполнение массива случайными значениями
+			for (int row = 0; row < M; row++)  // перебираем строки
+			{
+				for (int column = 0; column < N; column++) // перебираем столбцы в строке
+				{
+					array[row, column] = random.Next(100); // присваиваем очередному элементу массива случайное значение в интервале [0..100)
+					Console.Write(array[row, column] + "\t");
+				}
+				Console.WriteLine();
+			}
 
+			// поиск минимального и максимального значения в массиве
+			int minRow, maxRow = minRow = 0;   // объявление и инициализация стартовых значений для номера строки  минимума и максимума
+			int minColumn, maxColumn = minColumn = 0; // объявление и инициализация стартовых значений для номера столбца минимума и максимума
+			for (int row = 0; row < array.GetLength(0); row++)   // перебираем строки
+			{
+				for (int column = 0; column < array.GetLength(1); column++) // перебираем столбцы в строке
+				{
+					if (array[row, column] < array[minRow, minColumn]) // если текущий элемент меньше, чем тот, который считали минимальным до этого,
+					{
+						minRow = row;        // то запоминаем номер строки нового минимального элемента
+						minColumn = column;  // и запоминаем номер столбца нового минимального элемента
+					}
+
+					if (array[row, column] > array[maxRow, maxColumn]) // если текущий элемент меньше, чем тот, который считали максимальным до этого,
+					{
+						maxRow = row;        // то запоминаем номер строки нового максимального элемента
+						maxColumn = column;  // и запоминаем номер столбца нового максимального элемента
+					}
+				}
+			}
+
+			Console.WriteLine($"\nПозиция минимального элемента массива:\t[{minRow}, {minColumn}], значение: {array[minRow, minColumn]}");
+			Console.WriteLine($"Позиция максимального элемента массива:\t[{maxRow}, {maxColumn}], значение: {array[maxRow, maxColumn]}");
 		}
 
 		/// <summary>
