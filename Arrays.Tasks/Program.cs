@@ -10,7 +10,7 @@ namespace Arrays.Tasks
 		/// <summary>
 		/// Найти наибольший и наименьший элементы двумерного массива вещественных чисел В[m, n].
 		/// </summary>
-		public static void task1()
+		public static void Task1()
 		{
 			const int M = 5, N = 6;
 			double[,] array = new double[M, N];
@@ -50,7 +50,7 @@ namespace Arrays.Tasks
 		/// Найти сумму элементов Двумерного массива вещественных чисел C[15, 15], расположенных на главной диагонали.
 		/// Элементы главной диагонали – это элементы у которых индекс столбца и строки совпадает, например matrix[1][1] – второй элемент главной диагонали матрицы)
 		/// </summary>
-		public static void task2()
+		public static void Task2()
 		{
 			const int N = 15;
 			double[,] С = new double[N, N];
@@ -78,7 +78,7 @@ namespace Arrays.Tasks
 		/// <summary>
 		/// Найти номер строки и столбца Двумерного массива для максимального элемента этого массива. Аналогично для минимального.
 		/// </summary>
-		public static void task3()
+		public static void Task3()
 		{
 			const int M = 5, N = 6;
 			double[,] array = new double[M, N];
@@ -127,7 +127,7 @@ namespace Arrays.Tasks
 		/// а) максимальную сумму абсолютных значений элементов по строкам и номер строки с такой суммой;
 		/// б) максимальную сумму абсолютных значений элементов по столбцам и номер столбца с такой суммой.
 		/// </summary>
-		public static void task4()
+		public static void Task4()
 		{
 
 
@@ -138,7 +138,7 @@ namespace Arrays.Tasks
 		/// а) количество максимальных элементов в массиве;
 		/// б) количество минимальных элементов в массиве.
 		/// </summary>
-		public static void task5()
+		public static void Task5()
 		{
 
 
@@ -150,7 +150,7 @@ namespace Arrays.Tasks
 		/// б) количество положительных элементов;
 		/// в) количество элементов, кратных а или b.
 		/// </summary>
-		public static void task6()
+		public static void Task6()
 		{
 
 
@@ -159,7 +159,7 @@ namespace Arrays.Tasks
 		/// <summary>
 		/// Дан Двумерный массив из четного числа строк. Поменять местами первую строку со второй, третью — с четвертой и т.д.
 		/// </summary>
-		public static void task7()
+		public static void Task7()
 		{
 
 
@@ -167,13 +167,13 @@ namespace Arrays.Tasks
 
 		static void Main(string[] args)
 		{
-			task1();
-			task2();
-			task3();
-			task4();
-			task5();
-			task6();
-			task7();
+			Task1();
+			Task2();
+			Task3();
+			Task4();
+			Task5();
+			Task6();
+			Task7();
 		}
 	}
 }
